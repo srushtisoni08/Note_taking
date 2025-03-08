@@ -14,11 +14,14 @@ Session(app)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable = False, unique = True)
+    email = db.Column(db.String(50),nullable=False)
+    age = db.Column(db.Integer)
+    gender = db.Column(db.String(10),nullable=False)
+    dob = db.Column(db.String(20))
     password = db.Column(db.String(100), nullable=False)
     data_created =db.Column(db.DateTime, default = datetime.utcnow)
 
-@app.before_request
-def create_tables():
+with app.app_context():
     db.create_all()
 
 @app.route("/",methods = ["GET","POST"])
@@ -39,16 +42,46 @@ def login():
                 flash("Incorrect password!", "error")
                 return render_template("login.html")
         else:
-            return render_template("signin.html")
+            return render_template("signup.html")
 
     return render_template("login.html")
         
 @app.route("/register",methods = ["POST","GET"])
 def register():
     if request.method == "POST":
-        username = request.form.get('username')
+        username = request.form.get('name')
+        email = request.form.get('email')
+        age = request.form.get('age')
+        gender = request.form.get('gender')
+        dob = request.form.get('dob')
+        c_pass = request.form.get('Confirm_password')
         password = request.form.get("password")
-        
-        
+
+        if User.query.filter_by(name = username).first():
+            return "Username Already Exist"
+
+        if c_pass != password:
+            return "password do not match"
+        else:
+            hashed_password = generate_password_hash(password)
+            new_user = User(
+                name = username,
+                email = email,
+                age = age,
+                gender = gender,
+                dob = dob,
+                password = hashed_password
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            flash("successfully created account!","success")
+            return redirect(url_for("dashboard"))
+      
+    return render_template("signup.html")
+
+@app.route("/dashboard")
+def dashboard():
+    return "hii"
+
 if __name__ == "__main__":
     app.run(debug=True)

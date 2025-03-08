@@ -1,0 +1,38 @@
+{%extends "layout.html"%}
+{% block title %}
+    Sign Up
+{% endblock %}
+{% block body%}
+    <div class="signup">
+        <h1>SIGN UP</h1>
+        <form action="/register" method="post">
+            <h3>Name:</h3>
+            <input autofocus autocomplete="off" name="name" type="text" placeholder="Name" required>         
+            <h3>Email:</h3>
+            <input autofocus autocomplete="off" name="email" type="email" placeholder="Email" required>
+            <h3>Age:</h3>
+            <input autofocus autocomplete="off" name="age" type="number" placeholder="Age" min="5" max="120">
+            <h3>Gender:</h3>
+            <label>
+                <input type="radio" value="male" name="gender" required>
+                Male
+            </label>
+            <label>
+                <input type="radio" value="female" name="gender" required>
+                Female
+            </label>
+            <label>
+                <input name="gender" value="Do Not Want To specify" type="checkbox">
+                Do Not Want To Specify
+            </label>
+            <h3>Date Of Birth:</h3>
+            <input autofocus autocomplete="off" name="dob" type="date" placeholder="Date Of Birth">
+            <h3>Password:</h3>
+            <input autofocus autocomplete="off" name="password" type="password" placeholder="Password" required minlength="8">   
+            <h3>Confirm Password:</h3>
+            <input autofocus autocomplete="off" name="Confirm_password" type="password" placeholder="Confirm Password" required> 
+            <button type="submit">Sign Up</button>          
+        </form>
+    </div>
+{% endblock %}
+
