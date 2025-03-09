@@ -42,7 +42,7 @@ def login():
                 flash("Incorrect password!", "error")
                 return render_template("login.html")
         else:
-            return "you are not registered!"
+            flash("you are not Registered!","error")
 
     return render_template("login.html")
         
@@ -58,13 +58,14 @@ def register():
         password = request.form.get("password")
         
         if datetime.strptime(dob, '%Y-%m-%d') > datetime.now():
-            return "Invalid DOB"
+            flash("Invalid DOB","error")
 
         if User.query.filter_by(name = username).first():
-            return "Username Already Exist"
+            flash("Username already exist!","error")
 
         if c_pass != password:
-            return "password do not match"
+            flash("Password do not match","error")
+
         else:
             hashed_password = generate_password_hash(password)
             new_user = User(
