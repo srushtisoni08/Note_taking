@@ -42,7 +42,7 @@ def login():
                 flash("Incorrect password!", "error")
                 return render_template("login.html")
         else:
-            return render_template("signup.html")
+            return "you are not registered!"
 
     return render_template("login.html")
         
@@ -56,6 +56,9 @@ def register():
         dob = request.form.get('dob')
         c_pass = request.form.get('Confirm_password')
         password = request.form.get("password")
+        
+        if datetime.strptime(dob, '%Y-%m-%d') > datetime.now():
+            return "Invalid DOB"
 
         if User.query.filter_by(name = username).first():
             return "Username Already Exist"
@@ -79,9 +82,9 @@ def register():
       
     return render_template("signup.html")
 
-@app.route("/dashboard")
+@app.route("/dashboard",methods=["POST"])
 def dashboard():
-    return "hii"
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -7,22 +7,22 @@
         <h1>SIGN UP</h1>
         <form action="/register" method="post">
             <h3>Name:</h3>
-            <input autofocus autocomplete="off" name="name" type="text" placeholder="Name" required>         
+            <input autofocus autocomplete="off" name="name" type="text" placeholder="Name" required minlength="3">         
             <h3>Email:</h3>
             <input autofocus autocomplete="off" name="email" type="email" placeholder="Email" required>
             <h3>Age:</h3>
             <input autofocus autocomplete="off" name="age" type="number" placeholder="Age" min="5" max="120">
             <h3>Gender:</h3>
             <label>
-                <input type="radio" value="male" name="gender" required>
+                <input type="radio" value="male" name="gender">
                 Male
             </label>
             <label>
-                <input type="radio" value="female" name="gender" required>
+                <input type="radio" value="female" name="gender">
                 Female
             </label>
             <label>
-                <input name="gender" value="Do Not Want To specify" type="checkbox">
+                <input name="gender" value="Do Not Want To specify" type="radio">
                 Do Not Want To Specify
             </label>
             <h3>Date Of Birth:</h3>
