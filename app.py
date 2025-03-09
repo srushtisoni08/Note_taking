@@ -24,20 +24,21 @@ class User(db.Model):
 with app.app_context():
     db.create_all()
 
+
 @app.route("/",methods = ["GET","POST"])
 def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
         if not username or not password:
-            return render_template("error.html")
+            flash("Username or Password is Empty!", "error")
+            return redirect(url_for("login"))
 
         user_exist = User.query.filter_by(name = username).first()
         if user_exist:
             if check_password_hash(user_exist.password, password):
                 session["username"] = username
-                flash("Login successful!", "success")
-                return render_template("index.html")
+                return render_template("index.html", msg = "you're logged in successfully!")
             else:
                 flash("Incorrect password!", "error")
                 return render_template("login.html")
@@ -58,13 +59,13 @@ def register():
         password = request.form.get("password")
         
         if datetime.strptime(dob, '%Y-%m-%d') > datetime.now():
-            flash("Invalid DOB","error")
+            return render_template("signup.html",msg = "Invalid DOB")
 
         if User.query.filter_by(name = username).first():
-            flash("Username already exist!","error")
+            return render_template("signup.html", msg = "Username already exist!")
 
         if c_pass != password:
-            flash("Password do not match","error")
+            return render_template("signup.html", msg = "Password do not match")
 
         else:
             hashed_password = generate_password_hash(password)
@@ -78,12 +79,11 @@ def register():
             )
             db.session.add(new_user)
             db.session.commit()
-            flash("successfully created account!","success")
-            return redirect(url_for("dashboard"))
+            return render_template("index.html", msg = "successfully created account!")
       
     return render_template("signup.html")
 
-@app.route("/dashboard",methods=["POST"])
+@app.route("/dashboard",methods=["POST","GET"])
 def dashboard():
     return render_template("index.html")
 

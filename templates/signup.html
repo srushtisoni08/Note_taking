@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="static\style.css"> 
 {% endblock %}
 {% block body%}
+    {% if msg %}
+        <script>
+            window.onload = function() {
+                alert("{{ msg }}");
+            }
+        </script>
+    {% endif %}
     <div class="signup">
         <h1>SIGN UP</h1>
         <form action="/register" method="post">
