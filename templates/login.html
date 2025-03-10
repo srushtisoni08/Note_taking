@@ -17,19 +17,12 @@
                 Don't have account? SIGN UP 
             </a>
             {% with messages = get_flashed_messages(with_categories=True) %}
-            {% if messages %}
-                {% set category, message = messages[0] %}
-                {% if category == "error" %}
-                    <div class="error" style="color: red;">
+            {% if messages %}             
+                    <div style="color: red;">
                          {{ message }}
                     </div>
-                {% elif category == "success" %}
-                    <div class="success" style="color: green;">
-                         {{ message }}
-                    </div>
-                {% endif %}
             {% endif %}
-        {% endwith %}
+            {% endwith %}
         </form>
     </div>
 {% endblock %}

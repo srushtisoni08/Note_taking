@@ -11,6 +11,7 @@ app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_TYPE']='filesystem'
 db = SQLAlchemy(app)
 Session(app)
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable = False, unique = True)
@@ -20,6 +21,13 @@ class User(db.Model):
     dob = db.Column(db.String(20))
     password = db.Column(db.String(100), nullable=False)
     data_created =db.Column(db.DateTime, default = datetime.utcnow)
+
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 with app.app_context():
     db.create_all()
@@ -38,12 +46,14 @@ def login():
         if user_exist:
             if check_password_hash(user_exist.password, password):
                 session["username"] = username
-                return render_template("index.html", msg = "you're logged in successfully!")
+                notes = Note.query.filter_by(user_id=user_exist.id).all()
+                return render_template("index.html",user = user_exist,notes=notes, msg = "you are logged in successfully!")
             else:
                 flash("Incorrect password!", "error")
                 return render_template("login.html")
         else:
             flash("you are not Registered!","error")
+            return redirect(url_for("login"))
 
     return render_template("login.html")
         
@@ -85,7 +95,32 @@ def register():
 
 @app.route("/dashboard",methods=["POST","GET"])
 def dashboard():
-    return render_template("index.html")
+    user = User.query.filter_by(name=session["username"]).first()
+    notes = Note.query.filter_by(user_id=user.id).all()
+    return render_template("index.html",user=user, notes=notes)
+
+@app.route("/add_note", methods=["POST"])
+def add_note():
+    if "username" not in session:
+        flash("Please log in first.", "error")
+        return redirect(url_for("login"))
+
+    title = request.form.get("title")
+    content = request.form.get("content")
+    user = User.query.filter_by(name=session["username"]).first()
+
+    new_note = Note(title=title, content=content, user_id=user.id)
+    db.session.add(new_note)
+    db.session.commit()
+    return redirect(url_for("dashboard"))
+
+@app.route("/edit_note/<int:note_id>", methods=["POST"])
+def edit_note(note_id):
+    note = Note.query.get(note_id)
+    note.title = request.form.get("title")
+    note.content = request.form.get("content")
+    db.session.commit()
+    return redirect(url_for("dashboard"))
 
 if __name__ == "__main__":
     app.run(debug=True)
