@@ -15,6 +15,24 @@
     </script>
     {% endif %}
 
+    <div class="image">
+        <img src="" alt="profile image">
+        <div class="data">
+            <h2>Usename:</h2>
+            <h2>{{ user.name }}</h2>
+            <h2>Email:</h2>
+            {% if user.gender== "female" %}
+                <h2>{{ user.email }} . she/her </h2>
+                {% elif user.gender == "male" %}
+                <h2>{{ user.email }} . he/him</h2>
+                {% else %}
+                <h2>{{ user.email }}</h2>
+            {% endif %}
+            <h2>Date Of Birth:</h2>
+            <h2>{{user.dob}}</h2>
+        </div>
+    </div>
+
     <div class="note-container">
         <h1>NOTES ✍🏻</h1>
 
