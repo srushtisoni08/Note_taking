@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_session import Session
+import random
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "flask 1st project"
@@ -20,6 +21,7 @@ class User(db.Model):
     gender = db.Column(db.String(10),nullable=False)
     dob = db.Column(db.String(20))
     password = db.Column(db.String(100), nullable=False)
+    number = db.Column(db.Integer, default=1)
     data_created =db.Column(db.DateTime, default = datetime.utcnow)
 
 class Note(db.Model):
@@ -67,6 +69,7 @@ def register():
         dob = request.form.get('dob')
         c_pass = request.form.get('Confirm_password')
         password = request.form.get("password")
+        number = random.randint(1,10)
         
         if datetime.strptime(dob, '%Y-%m-%d') > datetime.now():
             return render_template("signup.html",msg = "Invalid DOB")
@@ -85,16 +88,21 @@ def register():
                 age = age,
                 gender = gender,
                 dob = dob,
-                password = hashed_password
+                password = hashed_password,
+                number = number
             )
             db.session.add(new_user)
             db.session.commit()
-            return render_template("index.html", msg = "successfully created account!")
+            session["username"] = username
+            notes = Note.query.filter_by(user_id=new_user.id).all()
+            return render_template("index.html", msg = "successfully created account!",user = new_user,notes=notes )
       
     return render_template("signup.html")
 
 @app.route("/dashboard",methods=["POST","GET"])
 def dashboard():
+    if "username" not in session:
+        return render_template("login.html",msg = "please log in first")
     user = User.query.filter_by(name=session["username"]).first()
     notes = Note.query.filter_by(user_id=user.id).all()
     return render_template("index.html",user=user, notes=notes)
@@ -120,6 +128,18 @@ def edit_note(note_id):
     note.title = request.form.get("title")
     note.content = request.form.get("content")
     db.session.commit()
+    return redirect(url_for("dashboard"))
+
+@app.route("/delete_data", methods=["GET","POST"])
+def delete_data():
+    user = User.query.filter_by(name=session["username"]).first()
+    if user:
+        Note.query.filter_by(user_id = user.id).delete()
+        db.session.delete(user)
+        db.session.commit()
+        session.clear()
+        flash("Your account has been deleted successfully!", "success")
+        return redirect(url_for("login"))
     return redirect(url_for("dashboard"))
 
 if __name__ == "__main__":
