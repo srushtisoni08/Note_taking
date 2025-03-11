@@ -23,9 +23,16 @@
 .image{
     display: flex;
     gap: 150px;
-    margin-top: 5% ;
-    box-shadow: 0 1px 0 black;
+    margin-top: 1% ;
     height: 500px;
+    background-color: #596e79;
+    box-shadow: 10px 10px 10px #596e79c4;
+    align-items: center;
+    border-radius: 50px;
+    width: fit-content;
+    justify-content: center;
+    margin-inline-start: 20%;
+    padding: 20px;
 }
 .image img{
     border-radius: 50%;
@@ -39,23 +46,44 @@ body{
     background: radial-gradient(circle, #fff,#f0ece2, #dfd3c3);
 }
 .main{
-    color: #A67C52;
+    color: #dfd3c3;
+    font-style: oblique;
 }
 .data button{
-    color: #ffffff;
-    background-color: #A67C52;
+    color: #596e79;
+    font-weight: bold;
+    background-color: #c7b198;
     padding: 15px 15px 15px 15px;
     border: none;
-    box-shadow: 0 3px 5px #596e79db;
+    box-shadow: 2px 3px 8px #fff1e2cd;
     border-radius: 10px;
+    width: 200px;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
 }
 .data button:hover{
-    background-color: rgb(197, 55, 55);
+    background-color: rgb(255, 84, 84);
     transform: scale(1.01);
-    box-shadow: 2px 3px 7px #596e79db;
+    box-shadow: 2px 3px 15px #fff1e2cd;
+    color: white;
 }
 .data .info{
-    color: #596e79;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding-left: 10px;
+    color: #ffffff;
+    font-style: inherit;
+}
+#name{
+    margin-top: 0%;
+    font-size: 4rem;
+    font-style: italic;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #dfd3c3;
+}
+.data button img{
+    height: 20px;
+    width: 20px;
+    background-color: #8e7252;
+    padding: 5px;
 }

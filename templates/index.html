@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="static\main.css"> 
 {% endblock %}
 {% block body%}
-
     {% if msg %}
     <script>
         window.onload = function() {
@@ -25,9 +24,8 @@
             <img src="static\images\i{{user.number}}.jpg" alt="profile image">
         </div>
         <div class="data">
-            <h2 class="main">Usename:</h2>
-            <h2 class="info">{{ user.name }}</h2>
-            <h2 class="main">Email:</h2>
+            <h1 id="name">{{ user.name }}</h1>
+            <h2 class="main">Email:
             {% if user.gender== "female" %}
                 <h2 class="info">{{ user.email }} . she/her </h2>
                 {% elif user.gender == "male" %}
@@ -35,10 +33,11 @@
                 {% else %}
                 <h2 class="info">{{ user.email }}</h2>
             {% endif %}
-            <h2 class="main">Date Of Birth:</h2>
-            <h2 class="info">{{user.dob}}</h2>
+            </h2>
+            <h2 class="main">Date Of Birth: <h2 class="info">{{ user.dob }}</h2></h2>
+            <!-- <h2 class="info">{{user.dob}}</h2> -->
             <form action="/delete_data" method="post">
-                <button>Delete Account</button>
+                <button>Delete Account <img src="static\image\trash.png" alt="trash image"></button>
             </form>
         </div>     
     </div>
