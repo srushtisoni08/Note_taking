@@ -1,0 +1,53 @@
+.navbar{
+    display: flex;
+    justify-content: flex-end;
+    background: linear-gradient(135deg, #c7b198 0%, #596e79 100%);
+    padding: 10px 20px;
+    gap: 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.navbar button{
+    padding: 10px;
+    background-attachment: fixed;
+    background-color: #f0ece2;
+    color: #596e79;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 2px 5px #f0ebe0c4;
+}
+.task:hover , .out:active{
+    background-color: #fffcf2;
+    box-shadow: 0 2px 10px #f0ebe0c4 ;
+}
+.image{
+    display: flex;
+    gap: 150px;
+    margin-top: 5% ;
+    box-shadow: 0 1px 0 black;
+    height: 500px;
+}
+.image img{
+    border-radius: 50%;
+    box-shadow: 0px 0px 50px #596e79;
+    margin-left: 15%;
+    height: 70%;
+    width: 100%;
+}
+body{
+    background: radial-gradient(circle, #fff,#f0ece2, #dfd3c3);
+}
+.main{
+    color: #A67C52;
+}
+.data button{
+    color: #ffffff;
+    background-color: #A67C52;
+    padding: 15px 15px 15px 15px;
+    border: none;
+    box-shadow: 0 3px 5px #596e79db;
+    border-radius: 10px;
+}
+.data button:hover{
+    background-color: rgb(197, 55, 55);
+}

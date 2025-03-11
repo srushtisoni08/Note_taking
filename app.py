@@ -142,5 +142,12 @@ def delete_data():
         return redirect(url_for("login"))
     return redirect(url_for("dashboard"))
 
+@app.route("/logout",methods=["POST","GET"])
+def logout():
+    user = User.query.filter_by(name = session['username']).first()
+    session.clear()
+    flash("You have been successfully logged out.")
+    return redirect(url_for("login"))
+
 if __name__ == "__main__":
     app.run(debug=True)
