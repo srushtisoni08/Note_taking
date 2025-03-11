@@ -26,17 +26,17 @@
         </div>
         <div class="data">
             <h2 class="main">Usename:</h2>
-            <h2>{{ user.name }}</h2>
+            <h2 class="info">{{ user.name }}</h2>
             <h2 class="main">Email:</h2>
             {% if user.gender== "female" %}
-                <h2>{{ user.email }} . she/her </h2>
+                <h2 class="info">{{ user.email }} . she/her </h2>
                 {% elif user.gender == "male" %}
-                <h2>{{ user.email }} . he/him</h2>
+                <h2 class="info">{{ user.email }} . he/him</h2>
                 {% else %}
-                <h2>{{ user.email }}</h2>
+                <h2 class="info">{{ user.email }}</h2>
             {% endif %}
             <h2 class="main">Date Of Birth:</h2>
-            <h2>{{user.dob}}</h2>
+            <h2 class="info">{{user.dob}}</h2>
             <form action="/delete_data" method="post">
                 <button>Delete Account</button>
             </form>
