@@ -1,7 +1,8 @@
 .navbar{
     display: flex;
     justify-content: flex-end;
-    background: linear-gradient(135deg, #c7b198 0%, #596e79 100%);
+    /* background: linear-gradient(135deg, #c7b198 0%, #596e79 100%); */
+    background-color: #596e79;
     padding: 10px 20px;
     gap: 20px;
     border-radius: 30px;
@@ -36,7 +37,7 @@
 }
 .image img{
     border-radius: 50%;
-    box-shadow: 0px 0px 50px #596e79;
+    box-shadow: 0px 0px 50px #dfd3c3;
     margin-left: 15%;
     height: 400px;
     width: 400px;
@@ -55,7 +56,7 @@ body{
     background-color: #c7b198;
     padding: 15px 15px 15px 15px;
     border: none;
-    box-shadow: 2px 3px 8px #fff1e2cd;
+    box-shadow: 2px 3px 8px #dbc3a7cf;
     border-radius: 10px;
     width: 200px;
     height: fit-content;
@@ -84,6 +85,6 @@ body{
 .data button img{
     height: 20px;
     width: 20px;
-    background-color: #8e7252;
+    background-color: #88827b;
     padding: 5px;
 }
