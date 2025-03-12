@@ -49,7 +49,7 @@ def login():
             if check_password_hash(user_exist.password, password):
                 session["username"] = username
                 notes = Note.query.filter_by(user_id=user_exist.id).all()
-                return render_template("index.html",user = user_exist,notes=notes, msg = "you are logged in successfully!")
+                return render_template("notes.html",user = user_exist,notes=notes, msg = "you are logged in successfully!")
             else:
                 flash("Incorrect password!", "error")
                 return render_template("login.html")
@@ -95,7 +95,7 @@ def register():
             db.session.commit()
             session["username"] = username
             notes = Note.query.filter_by(user_id=new_user.id).all()
-            return render_template("index.html", msg = "successfully created account!",user = new_user,notes=notes )
+            return render_template("notes.html", msg = "successfully created account!",user = new_user,notes=notes )
       
     return render_template("signup.html")
 
@@ -105,7 +105,7 @@ def dashboard():
         return render_template("login.html",msg = "please log in first")
     user = User.query.filter_by(name=session["username"]).first()
     notes = Note.query.filter_by(user_id=user.id).all()
-    return render_template("index.html",user=user, notes=notes)
+    return render_template("notes.html",user=user,notes=notes)
 
 @app.route("/add_note", methods=["POST"])
 def add_note():
@@ -149,5 +149,13 @@ def logout():
     flash("You have been successfully logged out.")
     return redirect(url_for("login"))
 
+@app.route("/tasks",methods = ["GET","POST"])
+def tasks():
+    return "task"
+
+@app.route("/get_it",methods = ["GET","POST"])
+def get_it():
+    user = User.query.filter_by(name = session['username']).first()
+    return render_template("index.html",user=user)
 if __name__ == "__main__":
     app.run(debug=True)

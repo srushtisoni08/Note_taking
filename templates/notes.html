@@ -1,0 +1,60 @@
+{% extends "layout.html"%}
+{% block title %}
+    Notes
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="static\notes.css"> 
+{% endblock %}
+{% block body%}
+    {% if msg %}
+        <script>
+            window.onload = function() {
+                alert("{{ msg }}");
+            }
+        </script>
+    {% endif %}
+    <div class="navbar">
+        <div class="Profile">
+            <button id="profile">{{user.name}}<img src="static\images\i{{user.number}}.jpg" alt="user profile"></button>
+            <div class="dropdown-content">
+                <form action="/get_it">
+                    <button>Profile</button>
+                </form>
+                <form action="/tasks">
+                    <button>Tasks</button>
+                </form>
+                <hr>
+                <form action="/logout">
+                    <button id="out"> Log Out</button> 
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="note-container">
+        <div class="n">
+            <h1>NOTES ✍🏻</h1>
+            <!-- + Button for Adding New Notes -->
+            <div class="note add-note-box" onclick="document.getElementById('addNoteForm').style.display='block'">
+                <span id="add">+</span>
+            </div>
+        </div>
+        <!-- Display Notes -->
+        {% for note in notes %}
+        <div class="note">
+            <h3>{{ note.title }}</h3>
+            <div class="note-content" id="note-content-{{ note.id }}">
+                <p>{{ note.content }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Add Note Form (Hidden Initially) -->
+    <div id="addNoteForm" style="display: none;">
+        <form action="/add_note" method="POST">
+            <input type="text" name="title" placeholder="Title" required>
+            <textarea name="content" placeholder="Write your note here..." required></textarea>
+            <button type="submit">Add Note</button>
+        </form>
+    </div>
+{%endblock%}

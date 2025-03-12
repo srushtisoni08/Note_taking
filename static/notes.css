@@ -1,0 +1,78 @@
+body{
+    background: radial-gradient(circle, #fff,#f0ece2, #dfd3c3);
+}
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    background-color: #596e79;
+    padding: 10px 20px;
+    gap: 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#profile {
+    border: none;
+    font-size: 16px;
+    display: flex;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50px;
+    background-color: #dfd3c3;
+    align-items: center;
+    color: #596e79;
+    font-style: italic;
+}
+
+#profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 8px;
+    border: 1px solid #737779;
+}
+.dropdown-content hr{
+    color: #dfd3c3;
+    height: 1px;
+}
+.dropdown-content{
+    position: fixed;
+    display: none;
+    border-radius: 5px;
+    box-shadow: 2px 3px 5px #596e79;
+    background-color: #f0ece2;
+    text-align: center;
+    padding: 10px;
+    width: 100px;
+    right: 1px;
+    margin-right: 10px;
+}
+.Profile:hover .dropdown-content {
+    display: block;
+}
+#profile:hover{
+    transform: scale(1.02);
+    box-shadow: 2px 2px 5px #596e79;
+}
+.Profile button{
+    border: none;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: 10px;
+}
+.Profile form button{
+    background-color: #f0ece2;
+    font-size: 15px;
+    font-weight: unset;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #246284;
+    padding: 5px;
+}
+.Profile form:hover,button{
+    transform: scale(1.05);
+    border-radius: 5px;
+}
+#out{
+    color: rgb(192, 0, 0);
+}
