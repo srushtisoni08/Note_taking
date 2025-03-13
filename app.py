@@ -38,8 +38,8 @@ with app.app_context():
 @app.route("/",methods = ["GET","POST"])
 def login():
     if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+        username = request.form.get("username").strip()
+        password = request.form.get("password").strip()
         if not username or not password:
             flash("Username or Password is Empty!", "error")
             return redirect(url_for("login"))
@@ -62,13 +62,13 @@ def login():
 @app.route("/register",methods = ["POST","GET"])
 def register():
     if request.method == "POST":
-        username = request.form.get('name')
-        email = request.form.get('email')
-        age = request.form.get('age')
+        username = request.form.get('name').strip()
+        email = request.form.get('email').strip()
+        age = request.form.get('age').strip()
         gender = request.form.get('gender')
         dob = request.form.get('dob')
-        c_pass = request.form.get('Confirm_password')
-        password = request.form.get("password")
+        c_pass = request.form.get('Confirm_password').strip()
+        password = request.form.get("password").strip()
         number = random.randint(1,10)
         
         if datetime.strptime(dob, '%Y-%m-%d') > datetime.now():

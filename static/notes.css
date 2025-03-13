@@ -76,3 +76,39 @@ body{
 #out{
     color: rgb(192, 0, 0);
 }
+.note-container{
+    margin-left: 2%;
+}
+.n h1{
+    font-style: inherit;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2rem; 
+    color: #003856;
+}
+.n{
+    display: flex;
+    align-items: center; 
+}
+.n span{
+    background-color: #246284;
+    border-radius: 50px;
+    padding: 1px;
+    user-select: none;
+    position: relative; /* Ensure it stays in line */
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    margin-left: 10px; /* Adjusted for alignment */
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+}
+.add-note-box{
+    justify-content: right;
+    
+}
