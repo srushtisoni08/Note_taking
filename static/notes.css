@@ -87,28 +87,41 @@ body{
 }
 .n{
     display: flex;
-    align-items: center; 
+    align-items: center;
+    justify-content: space-between;
+    width: 91%; 
 }
-.n span{
+.add-note-box{
     background-color: #246284;
-    border-radius: 50px;
+    border-radius: 50%;
     padding: 1px;
     user-select: none;
-    position: relative; /* Ensure it stays in line */
+    position: relative; 
     top: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 35px;
     height: 35px;
-    margin-left: 10px; /* Adjusted for alignment */
-    color: white;
+    margin-left: 10px; 
+    color: #f0ece2;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    position: relative;
+    position: relative; 
+    transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.4s ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+
+} 
+.add-note-box span {
+    transition: transform 0.3s ease-in-out;
 }
-.add-note-box{
-    justify-content: right;
-    
+.add-note-box:hover {
+    width: 130px; /* Expands to show "Add Notes" */
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+.add-note-box:hover span {
+    transform: translateX(10px); /* Moves the "+" sign a bit */
 }
