@@ -114,14 +114,29 @@ body{
     white-space: nowrap;
 
 } 
-.add-note-box span {
-    transition: transform 0.3s ease-in-out;
-}
 .add-note-box:hover {
     width: 130px; /* Expands to show "Add Notes" */
     border-radius: 20px;
-    padding: 5px 15px;
 }
-.add-note-box:hover span {
-    transform: translateX(10px); /* Moves the "+" sign a bit */
+.add-note-box .text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out, width 0.3s ease-in-out;
+    font-size: 20px;
+    font-style: oblique;
+    margin-left: 10px;
+}
+.add-note-box:hover .text {
+    opacity: 1;
+    width: auto;
+}
+.add-note-box span:first-child {
+    margin-right: 10px;
+}
+#add {
+    position: absolute;
+}
+.add-note-box:hover #add{
+    position: inherit;
 }

@@ -9,13 +9,15 @@
     <div class="login">
         <h1>Log In</h1>
         <form action="/" method="POST">
-            <input type="text" name="username" autocomplete="off" autofocus placeholder="Name">
-            
-            <input type="password" name="password" autocomplete="off" autofocus placeholder="Password">           
+            <input type="text" name="username" autocomplete="off" placeholder="Name">
+            <input type="password" name="password" autocomplete="off" placeholder="Password"> 
+                     
             <button type="submit">Log In</button>
+            
             <a href="{{ url_for('register') }}">
                 Don't have account? SIGN UP 
             </a>
+            <br>
             {% with messages = get_flashed_messages(with_categories=True) %}
                 {% if messages %}             
                     {% set category, message = messages[0] %}
