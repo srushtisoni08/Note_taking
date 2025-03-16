@@ -41,8 +41,14 @@
         </div>
         <!-- Display Notes -->
         {% for note in notes %}
-        <div class="note">
-            <h3>{{ note.title }}</h3>
+        <div class="note {% if user.gender == 'male' %}male-note{% elif user.gender == 'female' %}female-note{%else%}other-note{% endif %}">
+            <div id="header">
+                <h3>{{ note.title }}</h3>
+                <div id="images">
+                    <img src="static\image\trash.png" alt="delete button" id="delete">
+                    <img src="static\image\pen.png" alt="edit button" id="edit">
+                </div>
+            </div>
             <div class="note-content" id="note-content-{{ note.id }}">
                 <p>{{ note.content }}</p>
             </div>

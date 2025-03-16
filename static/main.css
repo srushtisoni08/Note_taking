@@ -18,7 +18,7 @@
     box-shadow: 0 2px 5px #f0ebe0c4;
     cursor: pointer;
 }
-.out:active{
+.out:active .home:active{
     background-color: #fffcf2;
     box-shadow: 0 2px 10px #f0ebe0c4 ;
 }

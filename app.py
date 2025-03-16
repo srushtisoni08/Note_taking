@@ -34,6 +34,9 @@ class Note(db.Model):
 with app.app_context():
     db.create_all()
 
+def generate_random_color():
+    colors = ["#FFC0CB", "#ADD8E6", "#98FB98", "#FFD700", "#FF6347", "#DDA0DD", "#20B2AA", "#FF4500", "#8A2BE2", "#40E0D0"]
+    return random.choice(colors)
 
 @app.route("/",methods = ["GET","POST"])
 def login():
