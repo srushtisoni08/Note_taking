@@ -122,14 +122,6 @@ def add_note():
     db.session.commit()
     return redirect(url_for("dashboard"))
 
-@app.route("/edit_note/<int:note_id>", methods=["POST"])
-def edit_note(note_id):
-    note = Note.query.get(note_id)
-    note.title = request.form.get("title")
-    note.content = request.form.get("content")
-    db.session.commit()
-    return redirect(url_for("dashboard"))
-
 @app.route("/delete_data", methods=["GET","POST"])
 def delete_data():
     user = User.query.filter_by(name=session["username"]).first()

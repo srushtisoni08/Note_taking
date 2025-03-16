@@ -1,46 +1,11 @@
-/* .first-color { 
-	background: #f0ece2; 
-}
-	
-.second-color { 
-	background: #dfd3c3; 
-}
-
-.third-color { 
-	background: #c7b198; 
-}
-
-.fourth-color { 
-	background: #596e79;
-
-
-	female notes1:#7D6E83
-	F2D7D9
-	D3CEDF
-
-
-
-	rgb(79, 57, 57)
-
-	background:
-radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0,
-radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,
-radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,
-radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px,
-radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px,
-radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,
-linear-gradient(45deg, #343702 0%, #184500 20%, #187546 30%, #006782 40%, #0b1284 50%, #760ea1 60%, #83096e 70%, #840b2a 80%, #b13e12 90%, #e27412 100%);
-background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
-background-color: #840b2a;
-}  */
 .signup {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: center;
-    height: 100vh;
-	background: 
+    height: 125vh;
+	/* background: 
 		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0,
 		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,
 		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,
@@ -49,12 +14,125 @@ background-color: #840b2a;
 		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,
 		linear-gradient(45deg,#fff  0%, #f0ece2 20%, #dfd3c3 30%, #c7b198 40%, #c29e75 50%, #b37c3d 60%, #99570c 70%, #613400 80%, #581900 90%, #000000 100%);
 	background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
+	background-color: #29414f; */
+	background: 
+		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.15) 30%, rgba(255,255,255,.3) 32%, rgba(255,255,255,0) 33%) 0 0,
+		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.3) 13%, rgba(255,255,255,0) 14%) 0 0,
+		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 17%, rgba(255,255,255,.43) 19%, rgba(255,255,255,0) 20%) 0 110px,
+		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) -130px -170px,
+		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.2) 11%, rgba(255,255,255,.4) 13%, rgba(255,255,255,0) 14%) 130px 370px,
+		radial-gradient(rgba(255,255,255,0) 0, rgba(255,255,255,.1) 11%, rgba(255,255,255,.2) 13%, rgba(255,255,255,0) 14%) 0 0,
+		linear-gradient(45deg,#fff  0%,#596e79 20%, #dfd3c3 30%, #c7b198 40%, #c29e75 50%, #b37c3d 60%, #99570c 70%, #613400 80%, #581900 90%, #000000 100%);
+	background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
 	background-color: #29414f;
 }
 
 form {
+    background: rgba(255, 255, 255, 0.1); /* Glass effect */
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 20px rgba(255, 255, 255, 0.2);
+    width: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+h3 {
+    font-size: 18px;
+    color: #fff;
+    margin: 10px 0 5px;
+}
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+    color: #29414f;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+input:focus {
+    border: 1px solid #c29e75;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+label {
+    color: #ffffff;
+    font-size: 14px;
+    margin-right: 10px;
+}
+button {
+    background: linear-gradient(135deg, #c29e75, #99570c);
+    border: none;
+    padding: 12px 20px;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+}
+button:hover {
+    background: linear-gradient(135deg, #99570c, #c29e75);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+}
+@media (max-width: 480px) {
+    form {
+        width: 90%;
+    }
+}
+#gender {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    align-items: center;
+    flex-wrap: wrap; 
+    padding: 10px 0;
+}
+#gender label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1); 
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+#gender label:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+#gender input[type="radio"] {
+    appearance: none; 
+    width: 16px;
+    height: 16px;
+    border: 2px solid white;
+    border-radius: 50%;
+    outline: none;
+    transition: 0.2s;
+    position: relative;
+}
+
+#gender input[type="radio"]:checked {
+    border-color: #c29e75;
+    background: radial-gradient(circle, #c29e75 40%, transparent 50%);
+}
+
+#gender input[type="radio"]:checked + span {
+    font-weight: bold;
+    color: #c29e75;
 }
