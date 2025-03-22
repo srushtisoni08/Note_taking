@@ -1,6 +1,6 @@
 # Flask Note-Taking App
 
-A minimal note-taking application where users can register, log in, create, read, and delete notes. The app utilizes Flask and persists the data to an SQLite database.
+A simple note-taking app where users can register, log in, create, read, and delete notes. The application uses Flask and stores the data to an SQLite database.
 
 ## Features
 
@@ -12,7 +12,7 @@ A minimal note-taking application where users can register, log in, create, read
 
 ## Requirements
 
-To execute this application, ensure you have the following dependencies installed:
+To run this application, make sure you have the following dependencies installed:
 
 - Python 3.x
 - Flask
@@ -25,10 +25,10 @@ To execute this application, ensure you have the following dependencies installe
 
 ```
 flask-note-app/
-│-- app.py              # Main Flask Application
-│-- database.db         # SQLite Database
-│-- templates/          # HTML Templates
-│-- static/             # CSS & JavaScript Files
+│   app.py               # Main Flask Application
+│   database.db         # SQLite Database
+│   templates/          # HTML Templates
+│   static/             # CSS & JavaScript Files
 ```
 
 ## Usage
@@ -48,7 +48,7 @@ flask-note-app/
    ```
 4. **Use the web interface** to register, log in, create, and manage notes.
 
-Notes will be stored in the database and persist across application restarts.
+Notes will be saved in the database and will remain after the application is restarted.
 
 ## Database Structure
 
@@ -91,14 +91,14 @@ Notes will be stored in the database and persist across application restarts.
 
 ## Security Considerations
 
-- Passwords are securely hashed before storage in the database.
-- User data privacy is ensured through session-based authentication.
-- CSRF protection and input validation should be implemented for additional security.
+- Passwords are securely hashed prior to storage in the database.
+- User data privacy is maintained using session-based authentication.
+- CSRF protection and input validation must be added for further security.
 
 ## Logging
 
-- The application writes events (such as user logins and note changes) to a log file.
-- This provides a history of actions performed.
+- The application logs events (e.g., user logins and note edits) to a log file.
+- This allows for a record of things done.
 
 ## Demo
 
@@ -107,8 +107,8 @@ Notes will be stored in the database and persist across application restarts.
 ---
 
 ### Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Pull requests are accepted. For large changes, first open an issue so we can discuss what you want to change.
 
 ### License
-This project is licensed under the MIT License.
+This project is released under the MIT License.
 
