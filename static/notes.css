@@ -257,3 +257,56 @@ h3 {
     padding: 5px;
     margin-left: 10px;
 }
+#addNoteForm {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,#fff,#f0ece2,#dfd3c3);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    z-index: 1000;
+}
+
+#addNoteForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#addNoteForm input, #addNoteForm textarea {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #596e79;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #fff;
+    box-shadow: 0 3px 3px #24628447;
+    outline: none;
+    border: none;
+}
+#addNoteForm input:focus, #addNoteForm textarea:focus{
+    transform: scale(1.01);
+}
+#addNoteForm textarea {
+    height: 100px;
+    resize: none;
+}
+
+#addNoteForm button {
+    background: #246284;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#addNoteForm button:hover {
+    background: #003856;
+}
