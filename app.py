@@ -152,5 +152,51 @@ def tasks():
 def get_it():
     user = User.query.filter_by(name = session['username']).first()
     return render_template("index.html",user=user)
+
+@app.route("/edit_note/<int:note_id>", methods=["POST"])
+def edit_note(note_id):
+    if "username" not in session:
+        flash("Please log in first.", "error")
+        return redirect(url_for("login"))
+
+    note = Note.query.get(note_id)
+    if not note:
+        flash("Note not found!", "error")
+        return redirect(url_for("dashboard"))
+
+    user = User.query.filter_by(name=session["username"]).first()
+    if note.user_id != user.id:
+        flash("You are not authorized to edit this note!", "error")
+        return redirect(url_for("dashboard"))
+
+    # Update the note with new values
+    note.title = request.form["title"]
+    note.content = request.form["content"]
+    db.session.commit()
+
+    return redirect(url_for("dashboard"))
+
+@app.route("/delete_note/<int:note_id>", methods=["POST"])
+def delete_note(note_id):
+    if "username" not in session:
+        flash("Please log in first.", "error")
+        return redirect(url_for("login"))
+
+    note = Note.query.get(note_id)
+    if not note:
+        flash("Note not found!", "error")
+        return redirect(url_for("dashboard"))
+
+    user = User.query.filter_by(name=session["username"]).first()
+    if note.user_id != user.id:
+        flash("You are not authorized to delete this note!", "error")
+        return redirect(url_for("dashboard"))
+
+    db.session.delete(note)
+    db.session.commit()
+    
+    flash("Note deleted successfully!", "success")
+    return redirect(url_for("dashboard"))
+
 if __name__ == "__main__":
     app.run(debug=True)
