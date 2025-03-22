@@ -1,90 +1,114 @@
-Flask Note-Taking App
-Video Demo: https://youtu.be/xfYxMB9kzv8
+# Flask Note-Taking App
+
 A minimal note-taking application where users can register, log in, create, read, and delete notes. The app utilizes Flask and persists the data to an SQLite database.
 
-Features
-User Registration & Authentication
+## Features
 
-Secure Password Storage (based on Werkzeug security)
+- **User Registration & Authentication**
+- **Secure Password Storage** (based on Werkzeug security)
+- **Create, Read, and Delete Notes**
+- **Session Management**
+- **SQLite Database Integration**
 
-Create, Read, and Delete Notes
+## Requirements
 
-Session Management
+To execute this application, ensure you have the following dependencies installed:
 
-SQLite Database Integration
+- Python 3.x
+- Flask
+- Flask-SQLAlchemy
+- Flask-Session
+- Werkzeug Security
+- SQLite
 
-Requirements
-To execute this application, you have the following dependencies:
+## Project Structure
 
-Python 3.x
+```
+flask-note-app/
+│-- app.py              # Main Flask Application
+│-- database.db         # SQLite Database
+│-- templates/          # HTML Templates
+│-- static/             # CSS & JavaScript Files
+```
 
-Flask
+## Usage
 
-Flask-SQLAlchemy
+1. **Clone the repository:**
+   ```sh
+   git clone <repo-url>
+   cd flask-note-app
+   ```
+2. **Install dependencies manually:**
+   ```sh
+   pip install Flask Flask-SQLAlchemy Flask-Session Werkzeug
+   ```
+3. **Run the application:**
+   ```sh
+   python app.py
+   ```
+4. **Use the web interface** to register, log in, create, and manage notes.
 
-Flask-Session
+Notes will be stored in the database and persist across application restarts.
 
-Werkzeug Security
+## Database Structure
 
-SQLite
+### User Table
 
-database.db: SQLite database containing users and notes.
+| Column       | Type      | Description                            |
+|-------------|----------|----------------------------------------|
+| id          | INTEGER  | Primary Key                            |
+| name        | TEXT     | Unique Username                        |
+| email       | TEXT     | User Email                             |
+| age         | INTEGER  | User Age                               |
+| gender      | TEXT     | User Gender                            |
+| dob         | TEXT     | Date of Birth                          |
+| password    | TEXT     | Hashed Password                        |
+| number      | INTEGER  | Randomly Assigned Number               |
+| date_created | TIMESTAMP | Timestamp of Account Creation         |
 
-templates/: Directory of HTML templates for the web interface.
+### Notes Table
 
-static/: Directory of CSS and JavaScript files.
+| Column       | Type      | Description                            |
+|-------------|----------|----------------------------------------|
+| id          | INTEGER  | Primary Key                            |
+| user_id     | INTEGER  | Foreign Key (References User ID)       |
+| title       | TEXT     | Note Title                             |
+| content     | TEXT     | Note Content                           |
+| date_created | TIMESTAMP | Timestamp of Note Creation            |
 
-Usage
-Run the application:
+## API Endpoints
 
-Use the web interface to register, log in, make, and administer notes.
+| Route        | Method | Description                         |
+|-------------|--------|-------------------------------------|
+| `/`         | GET/POST | Login Page                        |
+| `/register` | GET/POST | User Registration                 |
+| `/dashboard` | GET    | User Dashboard                     |
+| `/add_note` | POST   | Add a New Note                     |
+| `/delete_data` | POST | Delete User and Notes              |
+| `/logout`   | GET    | Log Out User                        |
+| `/tasks`    | GET    | Placeholder Route                   |
+| `/get_it`   | GET    | Sample Page                         |
 
-Notes will be stored in the database and available on next application launch.
+## Security Considerations
 
-Database Structure
-User Table
-id: Primary Key
+- Passwords are securely hashed before storage in the database.
+- User data privacy is ensured through session-based authentication.
+- CSRF protection and input validation should be implemented for additional security.
 
-name: Unique Username
+## Logging
 
-email: User Email
+- The application writes events (such as user logins and note changes) to a log file.
+- This provides a history of actions performed.
 
-age: User Age
+## Demo
 
-gender: User Gender
+[Video Demonstration](https://www.youtube.com/watch?v=85YrpwPEWb4)
 
-dob: Date of Birth
+---
 
-password: Hashed Password
+### Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-number: Randomly Assigned Number
-date_created: Timestamp of Account Creation
+### License
+This project is licensed under the MIT License.
 
-Notes Table
-id: Primary Key
-
-user_id: Foreign Key (References User ID)
-title: Note Title
-
-content: Note Content
-date_created: Timestamp of Note Creation
-
-API Endpoints
-Route Method Description
-/ GET/POST Login Page
-/register GET/POST User Registration
-/dashboard.GET User Dashboard
-/add_note.POST Add a New Note
-/delete_data.POST Delete User and Notes
-/logout.GET Log Out User
-/tasks.GET Placeholder Route
-/get_it.GET Sample Page
-Security Considerations
-Passwords are hashed before storage in the database.
-
-User data privacy is ensured by session-based authentication.
-
-CSRF protection and input validation should be implemented for additional security.
-
-Logging
-The application writes events (such as user logins and note changes) to a log file, giving a history of the actions performed.
