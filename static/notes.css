@@ -145,14 +145,6 @@ body{
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-#header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 h3 {
     font-size: 1.1rem;
     color: #fff; /* Light text */
@@ -169,7 +161,14 @@ h3 {
 #images img:hover {
     transform: scale(1.1);
 }
-
+#save{
+    background-color: #f0ece2;
+    border-radius: 20px;
+    color: #246284;
+    padding: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+}
 .note-content {
     color: #f0f0f0; 
     font-size: 0.9rem;
@@ -197,7 +196,13 @@ h3 {
     flex-direction: column;
     justify-content: space-between;
 }
-
+#note {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
 .note-content::-webkit-scrollbar {
     width: 5px;
 }
