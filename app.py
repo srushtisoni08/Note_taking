@@ -29,14 +29,19 @@ class Note(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
+    color = db.Column(db.String(7), nullable=True)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
 with app.app_context():
     db.create_all()
 
-def generate_random_color():
-    colors = ["#FFC0CB", "#ADD8E6", "#98FB98", "#FFD700", "#FF6347", "#DDA0DD", "#20B2AA", "#FF4500", "#8A2BE2", "#40E0D0"]
-    return random.choice(colors)
+def generate_random_color(gender):
+    male_colors = ["#003399", "#545AA7", "#73C2FB", "#8DA399", "#1ca9c9", "#005f69", "#6A5ACD", "#367588", "#0C2340", "#F0F8FF"]
+    female_colors = ["#FF69B4", "#eec0c8", "#800080", "#662d91", "#D8BFD8", "#770737", "#A95C68", "#AA336A", "#9F2B68", "#E30B5C"]
+    if gender.lower() == "male":
+        return random.choice(male_colors)
+    elif gender.lower() == "female":
+        return random.choice(female_colors)
 
 @app.route("/",methods = ["GET","POST"])
 def login():
@@ -119,8 +124,8 @@ def add_note():
     title = request.form.get("title")
     content = request.form.get("content")
     user = User.query.filter_by(name=session["username"]).first()
-
-    new_note = Note(title=title, content=content, user_id=user.id)
+    color = generate_random_color(user.gender)
+    new_note = Note(title=title, content=content, user_id=user.id, color= color)
     db.session.add(new_note)
     db.session.commit()
     return redirect(url_for("dashboard"))
@@ -155,48 +160,17 @@ def get_it():
 
 @app.route("/edit_note/<int:note_id>", methods=["POST"])
 def edit_note(note_id):
-    if "username" not in session:
-        flash("Please log in first.", "error")
-        return redirect(url_for("login"))
-
     note = Note.query.get(note_id)
-    if not note:
-        flash("Note not found!", "error")
-        return redirect(url_for("dashboard"))
-
-    user = User.query.filter_by(name=session["username"]).first()
-    if note.user_id != user.id:
-        flash("You are not authorized to edit this note!", "error")
-        return redirect(url_for("dashboard"))
-
-    # Update the note with new values
     note.title = request.form["title"]
     note.content = request.form["content"]
     db.session.commit()
-
-    flash("Note updated successfully!", "success")
     return redirect(url_for("dashboard"))
 
 @app.route("/delete_note/<int:note_id>", methods=["POST"])
 def delete_note(note_id):
-    if "username" not in session:
-        flash("Please log in first.", "error")
-        return redirect(url_for("login"))
-
     note = Note.query.get(note_id)
-    if not note:
-        flash("Note not found!", "error")
-        return redirect(url_for("dashboard"))
-
-    user = User.query.filter_by(name=session["username"]).first()
-    if note.user_id != user.id:
-        flash("You are not authorized to delete this note!", "error")
-        return redirect(url_for("dashboard"))
-
     db.session.delete(note)
     db.session.commit()
-    
-    flash("Note deleted successfully!", "success")
     return redirect(url_for("dashboard"))
 
 if __name__ == "__main__":
