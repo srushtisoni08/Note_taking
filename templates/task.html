@@ -1,0 +1,12 @@
+{%extends "layout.html"%}
+{% block title %}
+    Tasks
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="static\task.css"> 
+{% endblock %}
+{% block body%}
+    {%for event in events %}
+        <h2>{{event.title}}</h2>
+    {%endfor%}
+{% endblock %}

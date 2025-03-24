@@ -53,7 +53,7 @@ def generate_random_color(gender):
 def login():
     if request.method == "POST":
         username = request.form.get("username").strip()
-        password = request.form.get("password").strip()
+        password = request.form.get("password")
         if not username or not password:
             flash("Username or Password is Empty!", "error")
             return redirect(url_for("login"))
@@ -81,8 +81,8 @@ def register():
         age = request.form.get('age').strip()
         gender = request.form.get('gender')
         dob = request.form.get('dob')
-        c_pass = request.form.get('Confirm_password').strip()
-        password = request.form.get("password").strip()
+        c_pass = request.form.get('Confirm_password')
+        password = request.form.get("password")
         number = random.randint(1,10)
         
         if datetime.strptime(dob, '%Y-%m-%d') > datetime.now():
@@ -157,7 +157,9 @@ def logout():
 
 @app.route("/tasks",methods = ["GET","POST"])
 def tasks():
-    return "task"
+    user = User.query.filter_by(name=session["username"]).first()
+    events = Event.query.filter_by(user_id=user.id).all()
+    return render_template("task.html",events=events)
 
 @app.route("/get_it",methods = ["GET","POST"])
 def get_it():

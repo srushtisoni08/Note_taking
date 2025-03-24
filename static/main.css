@@ -89,3 +89,6 @@ body{
     background-color: #88827b;
     padding: 5px;
 }
+.home:hover, .out:hover{
+    transform: scale(1.03);
+}
