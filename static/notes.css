@@ -79,7 +79,7 @@ body{
 .note-container{
     margin-left: 2%;
 }
-.n h1{
+.n h1, .event h1{
     font-style: inherit;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 2rem; 
@@ -313,4 +313,79 @@ h3 {
 
 #addNoteForm button:hover {
     background: #003856;
+}
+
+#calendar {
+    max-width: 900px;
+    margin: auto;
+    background: #dfd3c3;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+.fc-toolbar {
+    background: #596e79;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+.fc-toolbar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f0ece2;
+}
+.fc-button {
+    background: #f0ece2 !important;
+    color: #246284 !important;
+    border: none;
+    border-radius: 5px !important;
+    padding: 5px 10px !important;
+}
+.fc-button:hover {
+    background: #003856 !important;
+    color: white !important;
+}
+.fc-daygrid-day {
+    border: 1px solid #dfd3c3;
+    background: #f0ece2;
+}
+.fc-day-today {
+    background: rgba(36, 98, 132, 0.2) !important;
+    border: 1px solid #246284 !important;
+}
+.fc-daygrid-day:hover {
+    background: rgba(36, 98, 132, 0.1);
+}
+.fc-event {
+    background: #596e79 !important;
+    border: none !important;
+    color: #f0ece2 !important;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.fc-event:hover {
+    background: #003856 !important;
+}
+.fc-event-title {
+    font-weight: bold;
+    color: #f0ece2;
+}
+.fc-event-time {
+    font-size: 12px;
+    color: #f0ece2;
+}
+@media (max-width: 768px) {
+    #calendar {
+        max-width: 100%;
+        padding: 10px;
+    }
+    .fc-toolbar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+.event h1{
+    margin-left: 28px;
 }

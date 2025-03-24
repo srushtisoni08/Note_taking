@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request ,url_for, flash, session, redirect
+from flask import Flask, render_template, request ,url_for, flash, session, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -31,6 +31,12 @@ class Note(db.Model):
     content = db.Column(db.Text, nullable=False)
     color = db.Column(db.String(7), nullable=True)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    date = db.Column(db.String(10), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 with app.app_context():
     db.create_all()
@@ -172,6 +178,33 @@ def delete_note(note_id):
     db.session.delete(note)
     db.session.commit()
     return redirect(url_for("dashboard"))
+
+@app.route('/get_events')
+def get_events():
+    user = User.query.filter_by(name=session["username"]).first()
+    events = Event.query.filter_by(user_id=user.id).all()
+    event_list = [{"id": event.id, "title": event.title, "start": event.date} for event in events]
+    return jsonify(event_list)
+
+@app.route('/add_event', methods=['POST'])
+def add_event():
+    user = User.query.filter_by(name=session["username"]).first()
+    data = request.json
+    new_event = Event(title=data['title'], date=data['date'],user_id=user.id)
+    db.session.add(new_event)
+    db.session.commit()
+    return jsonify({"message": "Event added successfully!"})
+
+@app.route('/delete_event', methods=['POST'])
+def delete_event():
+    user = User.query.filter_by(name=session["username"]).first()
+    data = request.json
+    event = Event.query.filter_by(id=data['id'], user_id=user.id).first()
+    if event:
+        db.session.delete(event)
+        db.session.commit()
+        return jsonify({"message": "Event deleted!"})
+    return jsonify({"error": "Event not found!"}), 404
 
 if __name__ == "__main__":
     app.run(debug=True)
