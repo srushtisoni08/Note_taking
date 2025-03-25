@@ -14,7 +14,7 @@
             <button class="out">Log Out</button>
         </form>
     </div>
-    {%for event in events %}
+    {% for event in events | sort(attribute='date') %}
         <div id="event">
             <h2 id="date">{{event.date}}</h2>
             <h2 id="title">{{event.title}}</h2>

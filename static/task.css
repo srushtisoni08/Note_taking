@@ -31,36 +31,39 @@ body{
 #event {
     display: flex;
     background: #596e79;
-    padding: 20px;
+    align-items: center;
     margin: 20px auto;
     width: 80%;
-    border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out;
+    border-radius: 10px;
+    border: 1px solid #1f3f51;
 }
 #event:hover {
     transform: scale(1.02);
 }
+
 #title {
     color: #f0ece2;
     font-size: 1.5rem;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 30px;
     display: flex;
     align-items: center;
+    background: #596e79;
 }
 #date{
-    /* background-color: #f0ece2;
-    color: #596e79; */
     background-color: #f0ece2;
     color: #596e79;
     font-size: 1.5rem;
     font-weight: bold;
-    width: 80px;   /* Square size */
-    height: 80px;
+    width: 120px;   
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-radius: 10px; /* Slightly rounded corners */
+    margin: 0;
+    border-radius: 10px;
+    
 }
