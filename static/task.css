@@ -1,7 +1,6 @@
 .navbar{
     display: flex;
     justify-content: flex-end;
-    /* background: linear-gradient(135deg, #c7b198 0%, #596e79 100%); */
     background-color: #596e79;
     padding: 10px 20px;
     gap: 20px;
@@ -27,4 +26,41 @@
 }
 body{
     background: radial-gradient(circle, #fff,#f0ece2, #dfd3c3);
+}
+
+#event {
+    display: flex;
+    background: #596e79;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+#event:hover {
+    transform: scale(1.02);
+}
+#title {
+    color: #f0ece2;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+#date{
+    /* background-color: #f0ece2;
+    color: #596e79; */
+    background-color: #f0ece2;
+    color: #596e79;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 80px;   /* Square size */
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px; /* Slightly rounded corners */
 }
