@@ -6,7 +6,18 @@
     <link rel="stylesheet" href="static\task.css"> 
 {% endblock %}
 {% block body%}
+    <div class="navbar">
+        <form action="/dashboard">
+            <button class="home">Home</button>
+        </form>
+        <form action="/logout">
+            <button class="out">Log Out</button>
+        </form>
+    </div>
     {%for event in events %}
-        <h2>{{event.title}}</h2>
+        <div id="event">
+            <h2 id="date">{{event.date}}</h2>
+            <h2 id="title">{{event.title}}</h2>
+        </div>
     {%endfor%}
 {% endblock %}
