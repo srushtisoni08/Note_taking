@@ -1,8 +1,4 @@
-Flask
+scheduleFlask
 Flask-SQLAlchemy
 Flask-Session
 Werkzeug
-datetime
-random
-Flask-Mail
-schedule
