@@ -26,6 +26,7 @@ Note_taking/
 │── static/          # CSS, JavaScript, images
 │── templates/       # HTML templates
 │── app.py           # Main application file
+│── requirements.txt # Dependencies
 │── database.db      # SQLite database
 │── README.md        # Documentation
 ```
