@@ -44,7 +44,9 @@ Note_taking/
 - Introduce collaboration features for shared note-taking.
 - Enhance UI/UX with better styling and animations.
 
-## License
-This project is open-source and available for use under the MIT License.
+## 🔒 License & Usage
 
+This project is intended for learning and personal demonstration purposes only.  
+**Do not** copy, reuse, or redistribute any part of the code without explicit permission from the author.
 
+© 2025 Srushti Pareshkumar Soni. All rights reserved.
