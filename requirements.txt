@@ -2,4 +2,5 @@ Flask
 Flask-SQLAlchemy
 Flask-Session
 Werkzeug
-schedule  # if you meant to use scheduling in Python
+schedule  
+gunicorn
